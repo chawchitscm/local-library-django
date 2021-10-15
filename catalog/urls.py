@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, api
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -15,6 +15,9 @@ urlpatterns = [
     path('author/<int:pk>/delete/', views.AuthorDelete.as_view(), name='author-delete'),
     path('book/create/', views.BookCreate.as_view(), name='book-create'),
     path('book/<int:pk>/update/', views.BookUpdate.as_view(), name='book-update'),
-    path('book/<int:pk>/delete/', views.BookDelete.as_view(), name='book-delete')
+    path('book/<int:pk>/delete/', views.BookDelete.as_view(), name='book-delete'),
+
+    path('api/track-ip/', api.APIAdvertiserView.track_visitor_ip, name='ads-api-track-ip'),
+    path('api/track-cookies/', api.APIAdvertiserView.track_cookies, name='ads-api-track-cookies')
 ]
 
